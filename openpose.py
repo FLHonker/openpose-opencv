@@ -111,7 +111,8 @@ while cv.waitKey(1) != 27:
     # *************** points *********** 
     # print(points)
 
-    for i, pair in POSE_PAIRS:
+    i = 0
+    for pair in POSE_PAIRS:
         partFrom = pair[0]
         partTo = pair[1]
         # assert(partFrom in BODY_PARTS)
@@ -121,10 +122,10 @@ while cv.waitKey(1) != 27:
         idTo = BODY_PARTS[partTo]
 
         if points[idFrom] and points[idTo]:
-            cv.line(poseFrame, points[idFrom], points[idTo], (0, 255, 0), 3)
+            cv.line(poseFrame, points[idFrom], points[idTo], colors[i], 3)
             cv.ellipse(poseFrame, points[idFrom], (3, 3), 0, 0, 360, (0, 0, 255), cv.FILLED)
             cv.ellipse(poseFrame, points[idTo], (3, 3), 0, 0, 360, (0, 0, 255), cv.FILLED)
-
+        i += 1
     t, _ = net.getPerfProfile()
     freq = cv.getTickFrequency() / 1000
     cv.putText(frame, '%.2fms' % (t / freq), (10, 20), cv.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
