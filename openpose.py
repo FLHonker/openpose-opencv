@@ -10,7 +10,8 @@ parser = argparse.ArgumentParser(
         description='This script is used to demonstrate OpenPose human pose estimation network '
                     'from https://github.com/CMU-Perceptual-Computing-Lab/openpose project using OpenCV. '
                     'The sample and model are simplified and could be used for a single person on the frame.')
-parser.add_argument('--input', default='pbug3_450x420.avi', help='Path to image or video. Skip to capture frames from camera')
+parser.add_argument('--input', default='pbug3_450x420.avi', help='Path to video. Skip to capture frames from camera')
+parser.add_argument('--ouput', default='outpose.avi', help='Path to output video')
 parser.add_argument('--proto', default='pose_deploy_linevec.prototxt', help='Path to .prototxt')
 parser.add_argument('--model', default='pose/coco/pose_iter_440000.caffemodel', help='Path to .caffemodel')
 parser.add_argument('--dataset', default='COCO', help='Specify what kind of model was trained. '
@@ -66,7 +67,7 @@ fourcc = cv.VideoWriter_fourcc(* 'XVID')
 w = int(cap.get(cv.CAP_PROP_FRAME_WIDTH))
 h = int(cap.get(cv.CAP_PROP_FRAME_HEIGHT))
 size = (w, h)
-poseout = cv.VideoWriter('output.avi', fourcc, 20.0, size)
+poseout = cv.VideoWriter(args.ouput, fourcc, 20.0, size)
 #create a black use numpy,size is:512*512
 poseFrame = np.zeros((h, w, 3), np.uint8)   
 #fill the image with white
