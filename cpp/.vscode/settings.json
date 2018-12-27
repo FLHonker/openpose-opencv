@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "*.m": "octave",
+        "iostream": "cpp",
+        "vector": "cpp"
+    }
+}

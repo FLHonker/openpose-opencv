@@ -10,7 +10,7 @@ parser = argparse.ArgumentParser(
 parser.add_argument('--input', required=True, help='video to cut.')
 parser.add_argument('--output', default='cut_video.avi', help='path to output video.')
 parser.add_argument('--width', type=int, default=450, help='width of target video.')
-parser.add_argument('--height', type=int, default=450, help='height of target video.')
+parser.add_argument('--height', type=int, default=420, help='height of target video.')
 parser.add_argument('--fps', type=float, default=20.0, help='the FPS of target video.')
 
 args = parser.parse_args()
@@ -27,7 +27,7 @@ height = args.height if args.height <= h else h
 x1 = int((w - width) / 2)
 y1 = int((h - height) / 2)
 x2 = x1 + width
-y2 = y1 + height - 30   # 420
+y2 = y1 + height   # 420
 size = (x2 - x1, y2 - y1)
 print(size)
 
