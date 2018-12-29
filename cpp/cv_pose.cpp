@@ -77,7 +77,7 @@ const Scalar colors[] = {
  * @param threshold
  * @param size
  *
- * @return 
+ * @return poseFrame
  */
 Mat openpose_image(dnn::Net net, Mat src, float threshold=0.1, Size size=Size(368,368))
 {
@@ -163,7 +163,7 @@ Mat openpose_image(dnn::Net net, Mat src, float threshold=0.1, Size size=Size(36
  * @param fps
  * @param threshold
  *
- * @return 
+ * @return i
  */
 int openpose_video(bool useCam, string inVideo, string outVideo, int frameNum=-1, float fps=20.0, float threshold=0.1)
 {
