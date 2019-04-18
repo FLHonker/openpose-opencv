@@ -50,8 +50,8 @@ for i in range(image_count):
     # frame1 = cv.resize(frame1, (target_w, target_h), interpolation=cv.INTER_CUBIC)
     # frame2 = cv.resize(frame2, (target_w, target_h), interpolation=cv.INTER_CUBIC)
     # 使用numpy将两张图片拼接
-    cv.imwrite('train_A/%d.jpg'%i, frame1)
-    cv.imwrite('train_B/%d.jpg'%i, frame2)
+    cv.imwrite('%s/a/%d_4.jpg'%(outpath, i), frame1)
+    cv.imwrite('%s/b/%d_4.jpg'%(outpath, i), frame2)
     if i > 0 and i % 20 == 0:
         end_time = time.time()
         print('已生成{}/{}张图片, 用时{:.2f}s'.format(i, image_count, end_time - start_time))

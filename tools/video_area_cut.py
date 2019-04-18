@@ -24,8 +24,8 @@ width = args.width if args.width <= w else w
 height = args.height if args.height <= h else h
 
 # Rect区域参数计算
-x1 = int((w - width) / 2) + 20
-y1 = int((h - height) / 2)
+x1 = int((w - width) / 2)
+y1 = int((h - height) / 2) - 20
 x2 = x1 + width
 y2 = y1 + height   # 420
 size = (x2 - x1, y2 - y1)

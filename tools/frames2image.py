@@ -11,7 +11,8 @@ parser = argparse.ArgumentParser(
 )
 parser.add_argument('--v1', required=True, help='Path to video1, generate the 1st image.')
 parser.add_argument('--v2', required=True, help='Path to video2, generate the 2nd image.')
-parser.add_argument('--outpath', default='frames2image/', help='path to save the images.')
+parser.add_argument('--outpath', default='frames2image', help='path to save the images.')
+parser.add_argument('--prefix', default=''. help='prefix of image name.')
 parser.add_argument('--count', type=int, default=-1, help='the number of images to gen.')
 parser.add_argument('--width', type=int, default=450, help='the width of each frame to resize.')
 parser.add_argument('--height', type=int, default=420, help='the height of each frame to resize.')
@@ -51,7 +52,7 @@ for i in range(image_count):
     frame2 = cv.resize(frame2, (target_w, target_h), interpolation=cv.INTER_CUBIC)
     # 使用numpy将两张图片拼接
     image = np.concatenate([frame1, frame2], axis=1)
-    cv.imwrite('%s%d.jpg'%(outpath, i), image)
+    cv.imwrite('%s/%s_%d.jpg'%(outpath, args.prefix, i), image)
     if i > 0 and i % 20 == 0:
         end_time = time.time()
         print('已生成{}/{}张图片, 用时{:.2f}s'.format(i, image_count, end_time - start_time))
